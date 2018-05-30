@@ -1,0 +1,13 @@
+{
+  "name": "PopularTweetsEveryday",
+  "version": "1.0.0",
+  "description": "Twitter bot to collect most popular 10 tweets on every track word and send a mail everyday for each track word.",
+  "main": "index.js",
+  "repository": "git@github.com:ashishkumarsinghh/PopularTweetsEveryday.git",
+  "author": "ashishkumarsinghh <ashishkumarsinghh@outlook.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "twit": "^2.2.9"
+  }
+}
