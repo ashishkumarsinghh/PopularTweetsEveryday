@@ -4,10 +4,10 @@ const Twit = require("twit")
 
 const app = express()
 const T = new Twit({
-  consumer_key: process.env.API_KEY,
-  consumer_secret: process.env.API_SECRET,
-  access_token: process.env.ACCESS_TOKEN,
-  access_token_secret: process.env.ACCESS_TOKEN_SECRET,
+  consumer_key: process.env.TWITTER_API_KEY,
+  consumer_secret: process.env.TWITTER_API_SECRET,
+  access_token: process.env.TWITTER_ACCESS_TOKEN,
+  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 })
 let count = 0;
 app.get("/", function(req, res){
