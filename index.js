@@ -19,11 +19,11 @@ app.get("/", function(req, res){
   res.send("A simple twitter bot by Ashish Kumar Singh.")
 })
 
-
-app.get("/mail", function(req, res){
-  sendMail();
-  res.send("Mail is sent. Please check.");
-})
+// 
+// app.get("/mail", function(req, res){
+//   sendMail();
+//   res.send("Mail is sent. Please check.");
+// })
 
 
 app.get("/tracklist", function(req, res){
