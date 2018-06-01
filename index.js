@@ -29,17 +29,17 @@ app.get("/", function(req, res) {
 // })
 
 
-T.get("lists/statuses", { owner_screen_name: "ks_ashi", slug: "javascript" }, function(error, data) {
-    //console.log(data)
-    if (data.text)
-        fs.appendFile("PopTweets.txt", data.text, function(err, content) {
-            if (err)
-                console.log(err)
-            else {
-                //console.log(content);
-            }
+T.get("lists/statuses", { owner_screen_name: "ks_ashi", slug: "javascript", include_rts: false },
+    function(error, tweet) {
+        tweet.forEach(element => {
+            if (element.favorite_count + element.retweet_count >= 5)
+                fs.appendFile("PopTweets.txt", element.text + "\n" + "\n", function(err) {
+                    if (err)
+                        console.log(err);
+                });
         });
-});
+
+    });
 
 
 function sendMail() {
@@ -56,11 +56,14 @@ function sendMail() {
 
 
 function reset() {
-    fs.writeFile("PopTweets.txt", "", function(err, data) {
+    fs.writeFile("PopTweets.txt", "", function(err) {
         if (err)
             console.log(err);
     });
 }
 
 
-app.listen(process.env.PORT, () => console.log("server running on." + process.env.PORT));
+app.listen(process.env.PORT, () => {
+    console.log("server running on." + process.env.PORT);
+    reset();
+});
