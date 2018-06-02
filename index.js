@@ -14,44 +14,50 @@ const T = new Twit({
 
 
 app.get("/", function(req, res) {
-    fs.readFile("PopTweets.txt", function(err, buf) {
-        if (err)
-            res.send(err)
-        else
-            res.send(buf.toString());
-    })
+
+    res.send("Server is running.");
 })
 
-// 
-// app.get("/mail", function(req, res){
-//   sendMail();
-//   res.send("Mail is sent. Please check.");
-// })
 
+let message = {};
+message.text = "";
 
-T.get("lists/statuses", { owner_screen_name: "ks_ashi", slug: "javascript", include_rts: false },
-    function(error, tweet) {
-        tweet.forEach(element => {
-            if (element.favorite_count + element.retweet_count >= 5)
-                fs.appendFile("PopTweets.txt", element.text + "\n" + "\n", function(err) {
-                    if (err)
-                        console.log(err);
-                });
+let getTweets = function() {
+    T.get("lists/statuses", { owner_screen_name: "ks_ashi", slug: "javascript", include_rts: false },
+        function(error, tweet) {
+            tweet.forEach(element => {
+                if (element.favorite_count + element.retweet_count >= 5) {
+
+                    message.text += element.text + "\n\n";
+                }
+            });
         });
+    message.to = "warrior2602@gmail.com";
+    message.from = "ashwebdeveloper@gmail.com";
+    message.subject = "Today's popular Tweets" + " " + new Date();
+    try {
+        sendMail(message);
+    } catch (error) {
+        console.log(error);
+    }
 
-    });
+};
+
+setInterval(getTweets, 10 * 60 * 60 * 1000);
 
 
-function sendMail() {
+function sendMail(msg) {
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-    const msg = {
+    /*const msg = {
         to: 'warrior2602@gmail.com',
         from: 'ashwebdeveloper@gmail.com',
         subject: 'Sending with SendGrid is Fun',
         text: 'and easy to do anywhere, even with Node.js',
         html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-    };
-    sgMail.send(msg);
+    };*/
+    sgMail.send(msg).catch(function(err) {
+        console.log(err);
+    });
 }
 
 
