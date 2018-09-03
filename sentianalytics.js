@@ -26,7 +26,7 @@ app.get("/", function(req, res) {
 });
 
 app.get("/compare", function(req, res) {
-  if (p1 === undefined || p2 === undefined) {
+  if (req.query.p1 === undefined || req.query.p2 === undefined) {
     res.send("bad bad bad !");
   }
   let result = [];
