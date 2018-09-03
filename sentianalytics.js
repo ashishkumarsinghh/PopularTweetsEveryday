@@ -22,6 +22,13 @@ const T = new Twit({
 });
 
 app.get("/", function(req, res) {
+  res.send("Server running.");
+});
+
+app.get("/compare", function(req, res) {
+  if (p1 === undefined || p2 === undefined) {
+    res.send("bad bad bad !");
+  }
   let result = [];
   let count = 0;
   T.get(
