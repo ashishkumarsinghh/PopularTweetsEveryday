@@ -15,6 +15,6 @@
   },
   "scripts": {
     "start": "node sentianalytics.js",
-    "heroku-postbuild": "cd client && yarn --prefix client && yarn run build --prefix client"
+    "heroku-postbuild": "cd client && yarn --only=dev && yarn run build"
   }
 }
