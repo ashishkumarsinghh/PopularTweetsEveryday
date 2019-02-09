@@ -5,8 +5,9 @@ const sentiment = new Sentiment();
 const express = require("express");
 
 const app = express();
+console.log("before static.");
 app.use(express.static(path.join(__dirname, "client/build")));
-
+console.log("thats me !00");
 app.listen(process.env.PORT, err => {
   if (err) {
     console.log(err);
