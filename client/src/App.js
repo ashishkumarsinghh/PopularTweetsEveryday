@@ -5,15 +5,14 @@ import "./App.css";
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {};
     this.state.data = [];
     this.state.p1 = "";
     this.state.p2 = "";
   }
-  handleSubmit = e => {
-    this.setState({
-      p1: document.getElementById("param1").textContent,
-      p2: document.getElementById("param2").textContent
-    });
+  handlep1 = e => this.setState({ p1: e.target.value });
+  handlep2 = e => this.setState({ p2: e.target.value });
+  handleSubmit = () => {
     fetch(
       "https://twibot26.herokuapp.com/compare?p1=" +
         this.state.p1 +
@@ -29,13 +28,23 @@ class App extends Component {
     return (
       <div className="App">
         <form>
-          <input type="text" id="param1" placeholder="First Item" required />
-          <input type="text" id="param2" placeholder="Second Item" required />
           <input
-            type="button"
-            onClick={this.handleSubmit.bind(this)}
-            value="Compare"
+            type="text"
+            id="param1"
+            placeholder="First Item"
+            required
+            onChange={this.handlep1}
+            value={this.state.p1}
           />
+          <input
+            type="text"
+            id="param2"
+            placeholder="Second Item"
+            required
+            onChange={this.handlep2}
+            value={this.state.p2}
+          />
+          <input type="button" onClick={this.handleSubmit()} value="Compare" />
         </form>
         <div>
           <h1>Results</h1>
