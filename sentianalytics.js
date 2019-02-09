@@ -6,7 +6,7 @@ const express = require("express");
 
 const app = express();
 console.log("before static.");
-app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.resolve(__dirname, "./client/build")));
 console.log("thats me !00");
 app.listen(process.env.PORT, err => {
   if (err) {
@@ -21,11 +21,6 @@ const T = new Twit({
   consumer_secret: process.env.TWITTER_API_SECRET,
   access_token: process.env.TWITTER_ACCESS_TOKEN,
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-});
-
-app.get("/", function(req, res) {
-  console.log("called the get method from node.");
-  res.sendFile(path.join(__dirname + "/client/public/index.html"));
 });
 
 app.get("/compare", function(req, res) {
@@ -111,4 +106,9 @@ app.get("/compare", function(req, res) {
       }
     }
   );
+});
+
+// All remaining requests return the React app, so it can handle routing.
+app.get("*", function(request, response) {
+  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 });
