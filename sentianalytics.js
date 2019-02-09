@@ -50,15 +50,12 @@ app.get("/compare", function(req, res) {
           score += s;
         });
         result.push({
-          "Search Term 1": req.query.p1,
-          "Total score": score,
-          "Most Positive Tweet": mpTweet,
-          "Most Negative Tweet": mnTweet
+          p1: req.query.p1,
+          p1score: score,
+          p1mpt: mpTweet,
+          p1mnt: mnTweet
         });
         count++;
-        console.log(req.query.p1 + " Score : " + score);
-        console.log("Most Positive: " + mpTweet);
-        console.log("Most Negative: " + mnTweet);
         if (count >= 2) {
           res.send({ result: result });
         }
@@ -92,10 +89,10 @@ app.get("/compare", function(req, res) {
         console.log("Most Positive: " + mpTweet);
         console.log("Most Negative: " + mnTweet);
         result.push({
-          "Search Term 1": req.query.p2,
-          "Total score": score,
-          "Most Positive Tweet": mpTweet,
-          "Most Negative Tweet": mnTweet
+          p2: req.query.p2,
+          p2score: score,
+          p2mpt: mpTweet,
+          p2mnt: mnTweet
         });
         count++;
         if (count >= 2) {
