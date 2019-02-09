@@ -3,7 +3,7 @@ const dotenv = require("dotenv").config();
 const Sentiment = require("sentiment");
 const sentiment = new Sentiment();
 const express = require("express");
-
+const path = require("path");
 const app = express();
 console.log("before static.");
 app.use(express.static(path.resolve(__dirname, "./client/build/")));
