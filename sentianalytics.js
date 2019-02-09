@@ -23,6 +23,7 @@ const T = new Twit({
 });
 
 app.get("/", function(req, res) {
+  console.log("called the get method from node.");
   res.sendFile(path.join(__dirname + "/client/public/index.html"));
 });
 
