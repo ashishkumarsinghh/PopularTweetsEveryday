@@ -23,7 +23,7 @@ const T = new Twit({
 });
 
 app.get("/", function(req, res) {
-  res.send("Server running.");
+  res.sendFile(path.join(__dirname + "/client/public/index.html"));
 });
 
 app.get("/compare", function(req, res) {

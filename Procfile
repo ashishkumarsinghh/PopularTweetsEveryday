@@ -1,1 +1,1 @@
-web: node sentianalytics.js
+web: yarn run start && yarn run heroku-postbuild
