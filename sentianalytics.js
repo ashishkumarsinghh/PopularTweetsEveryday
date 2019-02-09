@@ -6,7 +6,7 @@ const express = require("express");
 
 const app = express();
 console.log("before static.");
-app.use(express.static(path.resolve(__dirname, "./client/build")));
+app.use(express.static(path.resolve(__dirname, "./client")));
 console.log("thats me !00");
 app.listen(process.env.PORT, err => {
   if (err) {
@@ -110,5 +110,5 @@ app.get("/compare", function(req, res) {
 
 // All remaining requests return the React app, so it can handle routing.
 app.get("*", function(request, response) {
-  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+  response.sendFile(path.resolve(__dirname, "./client", "index.html"));
 });
