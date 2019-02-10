@@ -50,16 +50,16 @@ class App extends Component {
           <h1>Results</h1>
           <ParamSegment
             p1={this.state.p1}
-            score={this.state.p1score}
-            mpt={this.state.p1mpt}
-            mnt={this.state.p1mnt}
+            score={this.state.data[0].p1score}
+            mpt={this.state.data[0].p1mpt}
+            mnt={this.state.data[0].p1mnt}
           />
 
           <ParamSegment
             p1={this.state.p2}
-            score={this.state.p2score}
-            mpt={this.state.p2mpt}
-            mnt={this.state.p2mnt}
+            score={this.state.data[1].p2score}
+            mpt={this.state.data[1].p2mpt}
+            mnt={this.state.data[1].p2mnt}
           />
         </div>
       </div>
