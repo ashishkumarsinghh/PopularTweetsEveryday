@@ -12,7 +12,8 @@ class App extends Component {
   }
   handlep1 = e => this.setState({ p1: e.target.value });
   handlep2 = e => this.setState({ p2: e.target.value });
-  handleSubmit = () => {
+  handleSubmit = e => {
+    e.preventDefault();
     fetch(
       "https://twibot26.herokuapp.com/compare?p1=" +
         this.state.p1 +
@@ -27,25 +28,24 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <form>
-          <input
-            type="text"
-            id="param1"
-            placeholder="First Item"
-            required
-            onChange={this.handlep1}
-            value={this.state.p1}
-          />
-          <input
-            type="text"
-            id="param2"
-            placeholder="Second Item"
-            required
-            onChange={this.handlep2}
-            value={this.state.p2}
-          />
-          <input type="button" onClick={this.handleSubmit()} value="Compare" />
-        </form>
+        <input
+          type="text"
+          id="param1"
+          placeholder="First Item"
+          required
+          onChange={this.handlep1}
+          value={this.state.p1}
+        />
+        <input
+          type="text"
+          id="param2"
+          placeholder="Second Item"
+          required
+          onChange={this.handlep2}
+          value={this.state.p2}
+        />
+        <input type="button" onClick={this.handleSubmit} value="Compare" />
+
         <div>
           <h1>Results</h1>
           <ParamSegment
