@@ -18,7 +18,8 @@ class App extends Component {
   handleSubmit = e => {
     e.preventDefault();
     fetch(
-      "https://twibot26.herokuapp.com/compare?p1=" +
+      window.location.href +
+        "compare?p1=" +
         this.state.p1 +
         "&p2=" +
         this.state.p2
