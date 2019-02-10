@@ -6,7 +6,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.state.data = [
+    this.state.data.result = [
       { p1mnt: "", p1score: "", p1mpt: "" },
       { p2mnt: "", p2score: "", p2mpt: "" }
     ];
