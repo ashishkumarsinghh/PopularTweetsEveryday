@@ -1,2 +1,3 @@
 # PopularTweetsEveryday
-Twitter bot to collect most popular 10 tweets on every track word and send a mail everyday for each track word.
+https://twibot26.herokuapp.com/
+Compare tweet sentiments of 2 terms.
